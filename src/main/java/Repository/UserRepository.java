@@ -31,19 +31,16 @@ public class UserRepository  {
         return result;
 
     }
-    public int deleteUser(User user) throws SQLException {
+    public int deleteUser(int id) throws SQLException {
 
-        String addUserQuery = "INSERT INTO Users(name,username,email,password) VALUES(?,?,?,?); ";
+        String addUserQuery = "DELETE FROM Users WHERE id=?;";
 
         PreparedStatement preparedStatement = connection.prepareStatement(addUserQuery);
 
-        preparedStatement.setString(1, user.getName());
-        preparedStatement.setString(2, user.getUserName());
-        preparedStatement.setString(3, user.getEmail());
-        preparedStatement.setString(4, user.getEmail());
+        preparedStatement.setInt(1, id);
 
         int result = preparedStatement.executeUpdate();
         return result;
-
     }
+
 }
