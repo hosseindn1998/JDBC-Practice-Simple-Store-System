@@ -1,18 +1,18 @@
 CREATE TABLE IF NOT EXISTS Users(
     user_id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    username VARCHAR(255),
-    email VARCHAR(255),
+    username VARCHAR(255) UNIQUE ,
+    email VARCHAR(255) UNIQUE ,
     password VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS Categories(
   category_id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
+  name VARCHAR(255) UNIQUE ,
   description VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS Brand(
      brand_id SERIAL PRIMARY KEY,
-     name VARCHAR(255),
+     name VARCHAR(255) UNIQUE ,
      website VARCHAR(255),
      description VARCHAR(255)
 );
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Shareholder(
     shareholder_id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     phone_number INTEGER,
-    national_code INTEGER
+    national_code INTEGER UNIQUE
 );
 CREATE TABLE IF NOT EXISTS Shareholder_Brand(
   ShB_id SERIAL PRIMARY KEY,
