@@ -22,8 +22,8 @@ public class ProductRepository {
     }
 
     public int addProduct(Product product,int categoryId,int brandId) throws SQLException {
-        String addBrandQuery = "INSERT INTO product(name,create_date,category_id,brand_id)VALUES (?,?,?,?);";
-        PreparedStatement preparedStatement = connection.prepareStatement(addBrandQuery);
+        String addProductQuery = "INSERT INTO product(name,create_date,category_id,brand_id)VALUES (?,?,?,?);";
+        PreparedStatement preparedStatement = connection.prepareStatement(addProductQuery);
         preparedStatement.setString(1, product.getName());
         preparedStatement.setString(2, product.getCreateDate());
         preparedStatement.setInt(3, categoryId);
@@ -31,6 +31,14 @@ public class ProductRepository {
         int result = preparedStatement.executeUpdate();
         return result;
     }
+    public int deleteProduct(int id) throws SQLException {
+        String deleteProductQuery = "DELETE FROM product WHERE product_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteProductQuery);
+        preparedStatement.setInt(1, id);
+        int result = preparedStatement.executeUpdate();
+        return result;
+    }
+
 
 
 }
