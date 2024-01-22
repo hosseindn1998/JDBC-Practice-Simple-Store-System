@@ -32,6 +32,14 @@ public class ShareholderBrandRepository {
         int result=preparedStatement.executeUpdate();
         return result;
     }
-
+    public int editShareholder(int shbId,int shareholderId,int brandId) throws SQLException {
+        String editShareholderQuery="UPDATE shareholder_brand SET shareholder_id=?,brand_id=? WHERE shb_id=?";
+        PreparedStatement preparedStatement= connection.prepareStatement(editShareholderQuery);
+        preparedStatement.setInt(1, shbId);
+        preparedStatement.setInt(2, shareholderId);
+        preparedStatement.setInt(3, brandId);
+        int result=preparedStatement.executeUpdate();
+        return result;
+    }
 }
 
