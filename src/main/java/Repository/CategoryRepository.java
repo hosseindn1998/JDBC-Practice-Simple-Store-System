@@ -28,4 +28,13 @@ public int deleteCategory(int id)throws SQLException{
     int result = preparedStatement.executeUpdate();
     return result;
 }
+public int editCategory (Category category)throws SQLException{
+    String editCategoryQuery = "UPDATE  prescription SET name=?,description =? WHERE id=?;";
+    PreparedStatement preparedStatement = connection.prepareStatement(editCategoryQuery);
+    preparedStatement.setString(1, category.getName());
+    preparedStatement.setString(2, category.getDescription());
+    preparedStatement.setInt(3,category.getId());
+    int result = preparedStatement.executeUpdate();
+    return result;
+}
 }
