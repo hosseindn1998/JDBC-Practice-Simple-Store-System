@@ -33,7 +33,7 @@ public class UserRepository  {
     }
     public int deleteUser(int id) throws SQLException {
 
-        String addUserQuery = "DELETE FROM Users WHERE id=?;";
+        String addUserQuery = "DELETE * FROM Users WHERE id=?;";
 
         PreparedStatement preparedStatement = connection.prepareStatement(addUserQuery);
 
