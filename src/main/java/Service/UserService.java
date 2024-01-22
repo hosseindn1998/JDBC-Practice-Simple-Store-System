@@ -18,7 +18,25 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository =userRepository;
     }
+    public void singUp() throws SQLException {
 
+        System.out.println("Enter FullName :");
+        String name = scanner.next();
+
+        System.out.println("Enter username :");
+        String userName = scanner.next();
+
+        System.out.println("Enter email :");
+        String email = scanner.next();
+
+        System.out.println("Enter email :");
+        String password = scanner.next();
+
+        User user = new User(name,userName,email,password);
+        userRepository.addUser(user);
+        System.out.println("Dear "+name+" ,You are now registered and can login now.");
+
+    }
 
 
 }
