@@ -17,4 +17,12 @@ public class ShareholderBrandRepository {
         this.connection = connection;
     }
 
+    public int addShareholderBrand(int shareholderId,int brandId) throws SQLException {
+        String addShareholderQuery="INSERT INTO shareholder_brand(shareholder_id,brand_id) VALUES(?,?);";
+        PreparedStatement preparedStatement= connection.prepareStatement(addShareholderQuery);
+        preparedStatement.setInt(1, shareholderId);
+        preparedStatement.setInt(2, brandId);
+        int result=preparedStatement.executeUpdate();
+        return result;
+    }
 
