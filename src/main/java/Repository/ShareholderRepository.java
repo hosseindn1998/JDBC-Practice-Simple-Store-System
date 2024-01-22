@@ -27,12 +27,21 @@ public class ShareholderRepository {
     return result;
     }
     public int deleteShareholder(int id) throws SQLException {
-        String addShareholderQuery="DELETE * FROM shareholder WHERE shareholder_id=?";
-        PreparedStatement preparedStatement= connection.prepareStatement(addShareholderQuery);
+        String deleteShareholderQuery="DELETE * FROM shareholder WHERE shareholder_id=?";
+        PreparedStatement preparedStatement= connection.prepareStatement(deleteShareholderQuery);
         preparedStatement.setInt(1, id);
 
         int result=preparedStatement.executeUpdate();
         return result;
     }
-
+    public int editShareholder(Shareholder shareholder) throws SQLException {
+        String editShareholderQuery="UPDATE shareholder SET name=?,phone_number=?,national_code WHERE shareholder_id=?";
+        PreparedStatement preparedStatement= connection.prepareStatement(editShareholderQuery);
+        preparedStatement.setString(1, shareholder.getName());
+        preparedStatement.setInt(2, shareholder.getPhoneNumber());
+        preparedStatement.setInt(3, shareholder.getNational_code());
+        preparedStatement.setInt(4, shareholder.getId());
+        int result=preparedStatement.executeUpdate();
+        return result;
+    }
 }
