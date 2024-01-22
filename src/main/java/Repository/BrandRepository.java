@@ -23,4 +23,12 @@ public int addBrand(Brand brand)throws SQLException {
     int result=preparedStatement.executeUpdate();
     return result;
 }
+private int deleteBrand(int id) throws SQLException{
+    String deleteBrandQuery="DELETE FROM brand WHERE id=?";
+
+    PreparedStatement preparedStatement=connection.prepareStatement(deleteBrandQuery);
+    preparedStatement.setInt(1,id);
+    int result = preparedStatement.executeUpdate();
+    return result;
+}
 }
