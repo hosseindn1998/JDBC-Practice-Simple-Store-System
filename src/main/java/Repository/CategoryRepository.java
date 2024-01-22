@@ -21,4 +21,11 @@ public int addCategory (Category category)throws SQLException {
     int result= preparedStatement.executeUpdate();
     return result;
 }
+public int deleteCategory(int id)throws SQLException{
+    String deleteCategoryQuery="DELETE FROM categories WHERE category_id=?";
+    PreparedStatement preparedStatement=connection.prepareStatement(deleteCategoryQuery);
+    preparedStatement.setInt(1,id);
+    int result = preparedStatement.executeUpdate();
+    return result;
+}
 }
