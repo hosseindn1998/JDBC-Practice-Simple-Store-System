@@ -24,12 +24,21 @@ public int addBrand(Brand brand)throws SQLException {
     return result;
 }
 public int deleteBrand(int id) throws SQLException{
-    String deleteBrandQuery="DELETE FROM brand WHERE id=?";
-
+    String deleteBrandQuery="DELETE FROM brand WHERE brand_id=?";
     PreparedStatement preparedStatement=connection.prepareStatement(deleteBrandQuery);
     preparedStatement.setInt(1,id);
     int result = preparedStatement.executeUpdate();
     return result;
 }
+public int editBrand(Brand brand,int id)throws SQLException{
+    String editBrandQuery="UPDATE brand SET name=?,website=?,description=? WHERE brand_id=?";
+    PreparedStatement preparedStatement=connection.prepareStatement(editBrandQuery);
+    preparedStatement.setString(1,brand.getName());
+    preparedStatement.setString(2,brand.getWebsite());
+    preparedStatement.setString(3,brand.getDescription());
+    preparedStatement.setInt(4,id);
+    int result = preparedStatement.executeUpdate();
+    return result;
 
+}
 }
