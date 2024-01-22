@@ -30,13 +30,13 @@ public int deleteBrand(int id) throws SQLException{
     int result = preparedStatement.executeUpdate();
     return result;
 }
-public int editBrand(Brand brand,int id)throws SQLException{
+public int editBrand(Brand brand)throws SQLException{
     String editBrandQuery="UPDATE brand SET name=?,website=?,description=? WHERE brand_id=?";
     PreparedStatement preparedStatement=connection.prepareStatement(editBrandQuery);
     preparedStatement.setString(1,brand.getName());
     preparedStatement.setString(2,brand.getWebsite());
     preparedStatement.setString(3,brand.getDescription());
-    preparedStatement.setInt(4,id);
+    preparedStatement.setInt(4,brand.getId());
     int result = preparedStatement.executeUpdate();
     return result;
 
