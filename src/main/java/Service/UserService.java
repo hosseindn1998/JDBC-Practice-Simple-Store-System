@@ -33,8 +33,12 @@ public class UserService {
         String password = scanner.next();
 
         User user = new User(name,userName,email,password);
-        userRepository.addUser(user);
-        System.out.println("Dear "+name+" ,You are now registered and can login now.");
+        int result=userRepository.addUser(user);
+        if (result == 1) {
+            System.out.println("Dear "+name+" ,You are now registered and can login now.");
+        }else{
+            System.out.println("Something is wrong! try again");
+        }
 
     }
 
