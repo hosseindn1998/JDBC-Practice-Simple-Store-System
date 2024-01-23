@@ -1,5 +1,8 @@
 package Service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import Repository.UserRepository;
@@ -41,6 +44,22 @@ public class UserService {
         }
 
     }
+    public void signIn() throws SQLException {
+        System.out.println("Please enter your username:");
+        String username = scanner.nextLine();
+
+        System.out.println("Please enter your password");
+        String password = scanner.nextLine();
+
+        User user = userRepository.findByUsername(username);
+        if(user == null)
+            System.out.println("Please register first");
+        else if(!user.getPassword().equals(password))
+            System.out.println("Please enter correct password");
+        else
+            System.out.println("WELCOME " + user.getUserName());
+    }
+
 
 
 }
