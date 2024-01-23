@@ -24,4 +24,13 @@ public class CategoryService {
             System.out.println("something is wrong");
         }
     }
+    public void deleteCategory() throws SQLException {
+        System.out.println("please Enter CategoryId that you want delete? ");
+        int deleteCategoryId=scanner.nextInt();
+        int result=categoryRepository.deleteCategory(deleteCategoryId);
+        if(result==1) System.out.println(" category deleted Successfully ");
+        else{
+            System.out.println("something is wrong");
+        }
+    }
 }
