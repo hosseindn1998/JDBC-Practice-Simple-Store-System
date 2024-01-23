@@ -19,8 +19,9 @@ public class UserService {
     private final Scanner scanner = new Scanner(System.in);
 
     private final UserRepository userRepository;
-    String userName = "";
-    String password = "";
+    String machedUserName = "";
+    String machedEmail="";
+    String machedPassword = "";
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -34,19 +35,21 @@ public class UserService {
 
         do {
             System.out.println("Enter username :");
-            userName = scanner.next();
-        } while (!isValidUsername(userName));
+            machedUserName = scanner.next();
+        } while (!isValidUsername(machedUserName));
 
-        System.out.println("Enter email :");
-        String email = scanner.next();
+        do {
+            System.out.println("Enter email :");
+            machedEmail = scanner.next();
+        }while (!isValidEmail(machedEmail));
 
         do {
             System.out.println("Enter password :");
-            password = scanner.next();
-        } while (!isValidPassword(password));
+            machedPassword = scanner.next();
+        } while (!isValidPassword(machedPassword));
 
 
-        User user = new User(name, userName, email, password);
+        User user = new User(name, machedUserName, machedEmail, machedPassword);
         int result = userRepository.addUser(user);
         if (result == 1) {
             System.out.println("Dear " + name + " ,You are now registered and can login now.");
@@ -56,6 +59,18 @@ public class UserService {
 
     }
 
+    public static boolean isValidEmail(String email) {
+
+        String regex = "^(?=.{1,64}@)[\\p{L}0-9_-]+(\\.[\\p{L}0-9_-]+)*@"
+                + "[^-][\\p{L}0-9-]+(\\.[\\p{L}0-9-]+)*(\\.[\\p{L}]{2,})$";;
+
+        Pattern pattern = Pattern.compile(regex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
     public static boolean isValidPassword(String password) {
 
         String regex = "^(?=.*[0-9])"
