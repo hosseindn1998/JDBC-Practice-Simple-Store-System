@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Getter
@@ -41,6 +42,23 @@ public class UserRepository  {
 
         int result = preparedStatement.executeUpdate();
         return result;
+    }
+    public User findByUsername(String username) throws SQLException {
+        String findUser = "SELECT * FROM users WHERE username = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findUser);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) {
+            int id = resultSet.getInt("user_id");
+            String Name = resultSet.getString("name");
+            String fetchUsername = resultSet.getString("username");
+            String email = resultSet.getString("email");
+            String password = resultSet.getString("password");
+            User user = new User(id, Name, fetchUsername,email ,password);
+            return user;
+        }
+        else
+            return null;
     }
 
 }
