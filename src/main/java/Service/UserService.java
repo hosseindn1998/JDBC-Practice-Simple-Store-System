@@ -19,7 +19,9 @@ public class UserService {
     private final Scanner scanner = new Scanner(System.in);
 
     private final UserRepository userRepository;
-    String password="";
+    String userName = "";
+    String password = "";
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -30,8 +32,10 @@ public class UserService {
 
         String name = scanner.next();
 
-        System.out.println("Enter username :");
-        String userName = scanner.next();
+        do {
+            System.out.println("Enter username :");
+            userName = scanner.next();
+        } while (!isValidUsername(userName));
 
         System.out.println("Enter email :");
         String email = scanner.next();
@@ -39,7 +43,7 @@ public class UserService {
         do {
             System.out.println("Enter password :");
             password = scanner.next();
-        }while (!isValidPassword(password));
+        } while (!isValidPassword(password));
 
 
         User user = new User(name, userName, email, password);
@@ -52,8 +56,7 @@ public class UserService {
 
     }
 
-    public static boolean
-    isValidPassword(String password) {
+    public static boolean isValidPassword(String password) {
 
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
@@ -70,9 +73,25 @@ public class UserService {
         return matcher.matches();
     }
 
+    public static boolean isValidUsername(String username) {
+
+        String regex = "^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$";
+
+        Pattern pattern = Pattern.compile(regex);
+        if (username == null) {
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(username);
+
+        return matcher.matches();
+    }
+
     public void signIn() throws SQLException {
+
         System.out.println("Please enter your username:");
         String username = scanner.nextLine();
+
 
         System.out.println("Please enter your password");
         String password = scanner.nextLine();
