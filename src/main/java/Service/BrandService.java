@@ -28,5 +28,15 @@ public class BrandService {
             System.out.println("Error in brand adding . something is wrong");
         }
     }
+    public void deleteBrand() throws SQLException {
+        System.out.println("please Enter CategoryId that you want delete? ");
+        int deleteBrandId=scanner.nextInt();
+        int result=brandRepository.deleteBrand(deleteBrandId);
+        if(result==1) System.out.println(" category deleted Successfully ");
+        else{
+            System.out.println("Error in category Deleting . something is wrong");
+        }
+    }
+
 
 }
