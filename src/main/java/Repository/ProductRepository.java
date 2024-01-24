@@ -21,13 +21,13 @@ public class ProductRepository {
         this.connection = connection;
     }
 
-    public int addProduct(Product product,int categoryId,int brandId) throws SQLException {
+    public int addProduct(Product product) throws SQLException {
         String addProductQuery = "INSERT INTO product(name,create_date,category_id,brand_id)VALUES (?,?,?,?);";
         PreparedStatement preparedStatement = connection.prepareStatement(addProductQuery);
         preparedStatement.setString(1, product.getName());
         preparedStatement.setString(2, product.getCreateDate());
-        preparedStatement.setInt(3, categoryId);
-        preparedStatement.setInt(4, brandId);
+        preparedStatement.setInt(3, product.getCategoryId());
+        preparedStatement.setInt(4, product.getBrandId());
         int result = preparedStatement.executeUpdate();
         return result;
     }
