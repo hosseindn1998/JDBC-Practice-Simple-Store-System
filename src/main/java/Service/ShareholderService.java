@@ -50,8 +50,8 @@ public class ShareholderService {
         int phoneNumber = scanner.nextInt();
         System.out.println("Please enter New national code (must be 10 character):");
         int nationalCode = scanner.nextInt();
-        Shareholder shareholder = new Shareholder(shareHolderName, phoneNumber, nationalCode);
-        int result = shareholderRepository.addShareholder(shareholder);
+        Shareholder shareholder = new Shareholder(editShareHolderId,shareHolderName, phoneNumber, nationalCode);
+        int result = shareholderRepository.editShareholder(shareholder);
         if (result == 1) System.out.println(" shareholder edited Successfully ");
         else {
             System.out.println("Error in shareholder editing . something is wrong");
