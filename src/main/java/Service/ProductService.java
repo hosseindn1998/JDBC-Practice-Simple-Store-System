@@ -29,9 +29,9 @@ public class ProductService {
         int brandId = scanner.nextInt();
         Product product=new Product(productName,createDate,categoryId,brandId);
         int result= productRepository.addProduct(product);
-        if(result==1) System.out.println(" brand added Successfully ");
+        if(result==1) System.out.println(" product added Successfully ");
         else{
-            System.out.println("Error in brand adding . something is wrong");
+            System.out.println("Error in product adding . something is wrong");
         }
     }
     public void deleteProduct() throws SQLException {
@@ -41,6 +41,24 @@ public class ProductService {
         if(result==1) System.out.println(" product deleted Successfully ");
         else{
             System.out.println("Error in product Deleting . something is wrong");
+        }
+    }
+    public void editBrand()throws SQLException{
+        System.out.println("please Enter Product Id that you want edit? ");
+        int editProductId=scanner.nextInt();
+        System.out.println("Please enter new Product name:");
+        String productName = scanner.nextLine();
+        System.out.println("Please enter new Product website:");
+        String productCreateDate = scanner.nextLine();
+        System.out.println("Please enter your Product id:");
+        int categoryId = scanner.nextInt();
+        System.out.println("Please enter your Product id:");
+        int brandId = scanner.nextInt();
+        Product product=new Product(editProductId,productName,productCreateDate,categoryId,brandId);
+        int result= productRepository.addProduct(product);
+        if(result==1) System.out.println(" Product edited Successfully ");
+        else{
+            System.out.println("Error in product adding . something is wrong");
         }
     }
 
