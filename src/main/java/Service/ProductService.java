@@ -1,5 +1,6 @@
 package Service;
 
+import Entity.Brand;
 import Entity.Product;
 import Repository.ProductRepository;
 
@@ -33,6 +34,16 @@ public class ProductService {
             System.out.println("Error in brand adding . something is wrong");
         }
     }
+    public void deleteProduct() throws SQLException {
+        System.out.println("please Enter Product Id that you want delete? ");
+        int deleteProductId=scanner.nextInt();
+        int result=productRepository.deleteProduct(deleteProductId);
+        if(result==1) System.out.println(" product deleted Successfully ");
+        else{
+            System.out.println("Error in product Deleting . something is wrong");
+        }
+    }
+
 
 
 }
