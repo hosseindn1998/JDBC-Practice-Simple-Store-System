@@ -19,7 +19,7 @@ public class BrandService {
         String brandName = scanner.nextLine();
         System.out.println("Please enter your Brand website:");
         String brandWebsite = scanner.nextLine();
-        System.out.println("Please enter your category description:");
+        System.out.println("Please enter your Brand description:");
         String brandDescription = scanner.nextLine();
         Brand brand=new Brand(brandName,brandWebsite,brandDescription);
         int result= brandRepository.addBrand(brand);
@@ -29,14 +29,29 @@ public class BrandService {
         }
     }
     public void deleteBrand() throws SQLException {
-        System.out.println("please Enter CategoryId that you want delete? ");
+        System.out.println("please Enter Brand Id that you want delete? ");
         int deleteBrandId=scanner.nextInt();
         int result=brandRepository.deleteBrand(deleteBrandId);
-        if(result==1) System.out.println(" category deleted Successfully ");
+        if(result==1) System.out.println(" brand deleted Successfully ");
         else{
-            System.out.println("Error in category Deleting . something is wrong");
+            System.out.println("Error in brand Deleting . something is wrong");
         }
     }
-
+    public void editBrand()throws SQLException{
+        System.out.println("please Enter BrandId that you want edit? ");
+        int editBranddId=scanner.nextInt();
+        System.out.println("Please enter new Brand name:");
+        String brandName = scanner.nextLine();
+        System.out.println("Please enter new Brand website:");
+        String brandWebsite = scanner.nextLine();
+        System.out.println("Please enter new Brand description:");
+        String brandDescription = scanner.nextLine();
+        Brand brand =new Brand(editBranddId,brandName,brandWebsite,brandDescription);
+        int result= brandRepository.editBrand(brand);
+        if(result==1) System.out.println(" brand edited Successfully ");
+        else{
+            System.out.println("Error in brand Editing . something is wrong");
+        }
+    }
 
 }
