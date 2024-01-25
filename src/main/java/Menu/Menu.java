@@ -48,7 +48,11 @@ public class Menu {
             case 12 -> addShareholder();
             case 13 -> editShareholder();
             case 14 -> deleteShareholder();
-            case 15 -> System.out.println("Thank you for use,Nice to meet you");
+            case 15 -> addShareholderBrand();
+            case 16 -> editShareholderBrand();
+            case 17 -> deleteShareholderBrand();
+
+            case 18 -> System.out.println("Thank you for use,Nice to meet you");
             default -> System.out.println("Fake input,please Enter Number 1-6 ");
         }
 
@@ -90,6 +94,16 @@ public class Menu {
     }
     public void deleteShareholder() throws SQLException {
         shareholderService.deleteShareholder();
+    }
+    public void addShareholderBrand() throws SQLException {
+        shareholderBrandService.addShareholderBrand();
+    }
+
+    public void editShareholderBrand() throws SQLException {
+        shareholderBrandService.editShareholderBrand();
+    }
+    public void deleteShareholderBrand() throws SQLException {
+        shareholderBrandService.deleteShareholderBrand();
     }
     public void addProduct() throws SQLException {
         productService.addProduct();

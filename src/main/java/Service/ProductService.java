@@ -43,7 +43,7 @@ public class ProductService {
             System.out.println("Error in product Deleting . something is wrong");
         }
     }
-    public void editBrand()throws SQLException{
+    public void editProduct()throws SQLException{
         System.out.println("please Enter Product Id that you want edit? ");
         int editProductId=scanner.nextInt();
         System.out.println("Please enter new Product name:");
