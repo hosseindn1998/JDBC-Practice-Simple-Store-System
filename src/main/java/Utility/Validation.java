@@ -46,4 +46,47 @@ public class Validation {
 
         return matcher.matches();
     }
+    public static boolean isValidWebsite(String website) {
+
+        String regex = "/((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)/\n";
+
+
+        Pattern pattern = Pattern.compile(regex);
+        if (website == null) {
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(website);
+
+        return matcher.matches();
+    }
+    public static boolean isValidphoneNumber(String username) {
+
+        String regex = "^[1-9]\\d{2}-\\d{3}-\\d{4}\n" +
+                "^\\(\\d{3}\\)\\s\\d{3}-\\d{4}\n" +
+                "^[1-9]\\d{2}\\s\\d{3}\\s\\d{4}\n" +
+                "^[1-9]\\d{2}\\.\\d{3}\\.\\d{4}";
+
+        Pattern pattern = Pattern.compile(regex);
+        if (username == null) {
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(username);
+
+        return matcher.matches();
+    }
+    public static boolean isValidNationalCode(String username) {
+
+        String regex = "[0-9]{10}";
+
+        Pattern pattern = Pattern.compile(regex);
+        if (username == null) {
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(username);
+
+        return matcher.matches();
+    }
 }
